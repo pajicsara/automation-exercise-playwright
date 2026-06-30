@@ -35,6 +35,21 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'api',
+      use: {
+        baseURL: 'https://automationexercise.com/api',
+        extraHTTPHeaders: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      },
+    },
+    {
+      name: 'ui',
+      use: {
+        baseURL: 'https://automationexercise.com',
+      },
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
