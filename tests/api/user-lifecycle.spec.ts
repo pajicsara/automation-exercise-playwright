@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { BASE_API_URL, endpoints } from '../api/services/endpoints';
 import { testData } from '../resources/testData';
 
-test('User lifecycle - create, login and delete user', async ({ request }) => {
+test('@api @auth @lifecycle User lifecycle - create, login and delete user', async ({ request }) => {
   const user = testData.generateUser();
 
   // Create user

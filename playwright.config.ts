@@ -35,34 +35,24 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'api',
-      use: {
-        baseURL: 'https://automationexercise.com/api',
-        extraHTTPHeaders: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
+    name: 'api',
+    testMatch: '**/api/**/*.spec.ts',
+    use: {
+      baseURL: 'https://automationexercise.com/api',
+      extraHTTPHeaders: {
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
     },
-    {
-      name: 'ui',
-      use: {
-        baseURL: 'https://automationexercise.com',
-      },
+  },
+  {
+    name: 'e2e',
+    testMatch: '**/e2e/**/*.spec.ts',
+    use: {
+      ...devices['Desktop Chrome'],
+      baseURL: 'https://automationexercise.com',
     },
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+  }
+    ,
 
     /* Test against mobile viewports. */
     // {

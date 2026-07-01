@@ -1,4 +1,4 @@
-import { generateEmail } from "../../utils/random"
+import { generateEmail } from "../../utils/random_data_generator"
 
 export const testData = {
   stableUser: {
@@ -9,6 +9,20 @@ export const testData = {
   invalidUser: {
     email: "wrong@email.com",
     password: "wrongpass",
+  },
+
+  payment: {
+    valid: {
+      name: "QA User",
+      card: "4111111111111111",
+      cvc: "123",
+      month: "12",
+      year: "2030",
+    }
+  },
+  
+  products: {
+    blueTop: "Blue Top",
   },
 
   generateUser: () => {
@@ -27,7 +41,7 @@ export const testData = {
       company: "Automation Exercise",
       address1: "Street 1",
       address2: "",
-      country: "Serbia",
+      country: "Canada",
       zipcode: "11000",
       state: "RS",
       city: "Belgrade",

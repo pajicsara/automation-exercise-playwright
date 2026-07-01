@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { BASE_API_URL, endpoints } from '../api/services/endpoints';
 
-test('POST /searchProduct - returns matching products for valid query', async ({ request }) => {
+test('@api @search POST /searchProduct - returns matching products for valid query', async ({ request }) => {
   const response = await request.post(
     `${BASE_API_URL}${endpoints.search}`,
     {
@@ -20,7 +20,7 @@ test('POST /searchProduct - returns matching products for valid query', async ({
   expect(body.products.length).toBeGreaterThan(0);
 });
 
-test('POST /searchProduct - returns 400 when search parameter is missing', async ({ request }) => {
+test('@api @negative POST /searchProduct - returns 400 when search parameter is missing', async ({ request }) => {
   const response = await request.post(
     `${BASE_API_URL}${endpoints.search}`,
     {

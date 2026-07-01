@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test": "playwright test",
+    "test:api": "playwright test --project=api",
+    "test:e2e": "playwright test --project=e2e",
+    "test:smoke": "playwright test --grep @smoke --project=e2e-chromium",
+    "test:report": "playwright show-report",
+    "test:core": "playwright test --grep @core",
+    "test:negative": "playwright test --grep @negative",
+    "test:feature": "playwright test --grep @feature"
   },
   "repository": {
     "type": "git",
@@ -20,7 +28,7 @@
   "homepage": "https://github.com/pajicsara/automation-exercise-playwright#readme",
   "devDependencies": {
     "@playwright/test": "^1.61.1",
-    "@types/node": "^26.0.1",
+    "@types/node": "^26.1.0",
     "prettier": "^3.9.3"
   }
 }

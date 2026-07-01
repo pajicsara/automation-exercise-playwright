@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { BASE_API_URL, endpoints } from '../api/services/endpoints';
 
-test('GET /productsList - returns all products', async ({ request }) => {
+test('@api @products GET /productsList - returns all products', async ({ request }) => {
   const response = await request.get(
     `${BASE_API_URL}${endpoints.products}`
   );
@@ -15,7 +15,7 @@ test('GET /productsList - returns all products', async ({ request }) => {
   expect(body.products.length).toBeGreaterThan(0);
 });
 
-test('GET /productsList - validates product structure', async ({ request }) => {
+test('@api @products GET /productsList - validates product structure', async ({ request }) => {
   const response = await request.get(
     `${BASE_API_URL}${endpoints.products}`
   );
@@ -36,20 +36,15 @@ test('GET /productsList - validates product structure', async ({ request }) => {
   );
 });
 
-test('POST /verifyLogin - returns user exists message', async ({ request }) => {
+test('@api @products @negative POST /productsList - returns method not supported', async ({ request }) => {
   const response = await request.post(
-    `${BASE_API_URL}${endpoints.login}`,
-    {
-      form: {
-        email: 'sa.pajic@yopmail.com',
-        password: 'teamH2411',
-      },
-    }
+    `${BASE_API_URL}${endpoints.products}`
   );
 
   expect(response.status()).toBe(200);
 
-  const body = await response.text();
+  const body = await response.json();
 
-  expect(body).toContain('User exists');
+  expect(body.responseCode).toBe(405);
+  expect(body.message).toBe('This request method is not supported.');
 });
